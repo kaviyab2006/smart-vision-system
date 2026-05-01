@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Object Detection</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Vision Assist</h1>
+            <p aria-live="polite" id="status-text">Ready to help you see the world.</p>
+        </header>
+
+        <main>
+            <div class="controls">
+                <button id="btn-camera" class="glass-btn primary" aria-label="Start Live Camera">
+                    <span class="icon">🎥</span>
+                    <span class="text">Live Camera</span>
+                </button>
+                
+                <label for="file-upload" class="glass-btn secondary" tabindex="0" role="button" aria-label="Upload Image">
+                    <span class="icon">📷</span>
+                    <span class="text">Upload Image</span>
+                </label>
+                <input id="file-upload" type="file" accept="image/*" class="hidden">
+
+                <button id="btn-voice" class="glass-btn accent" aria-label="Voice Command, Try 'Find wallet'">
+                    <span class="icon">🎙️</span>
+                    <span class="text">Voice Command</span>
+                </button>
+            </div>
+
+            <div class="video-container hidden" id="video-wrapper">
+                <video id="video-feed" autoplay playsinline aria-hidden="true"></video>
+                <canvas id="output-canvas" aria-hidden="true"></canvas>
+            </div>
+            
+            <div class="image-preview-container hidden" id="image-wrapper">
+                <img id="image-preview" alt="Uploaded preview" />
+                <canvas id="static-canvas" aria-hidden="true"></canvas>
+            </div>
+        </main>
+    </div>
+
+    <!-- Hidden audio element context for activating web speech APIs smoothly on some browsers -->
+    <button id="btn-stop" class="glass-btn error hidden" aria-label="Stop Camera">Stop Camera</button>
+    <script src="app.js"></script>
+</body>
+</html>
